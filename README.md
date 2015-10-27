@@ -6,4 +6,4 @@ Customer
 Project
 Developer 
 etc. 
-This application was developed with ASP.NET in a MVVMC design pattern. 
+This application was developed in ASP.NET in a MVVMC design pattern. 
