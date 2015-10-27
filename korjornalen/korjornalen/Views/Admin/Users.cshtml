@@ -1,0 +1,60 @@
+﻿@model List<korjornalen.ViewModels.UserFrontEndSafe>
+
+@{
+    ViewBag.Title = @Resources.AppString.AdministerUsers;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@AppString.AdministerUsers</h2>
+<hr />
+<div class="row">
+    <div class="col-md-2">
+        @Html.Partial("_AdminMenu")
+    </div>
+    <div id="adminList" class="col-md-10">
+        <div id="appMessage-container">
+
+        </div>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model[0].Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model[0].Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model[0].IsAdmin)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model[0].IsActive)
+                </th>
+                <th></th>
+            </tr>
+
+            @for (int i = 0; i < Model.Count(); i++ )
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model[i].Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model[i].Email)
+                    </td>
+                    <td>
+                        @Html.EditorFor(modelItem => Model[i].IsAdmin, new { htmlAttributes = new { @onclick = "UpdateStatus('user', 'admin', '"+ @Model[i].Id +"', this)" } })
+                    </td>
+                    <td>
+                        @Html.EditorFor(modelItem => Model[i].IsActive, new { htmlAttributes = new { @onclick = "UpdateStatus('user', 'active', '" + @Model[i].Id + "', this)" } })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/Content/script-adminlists")
+}

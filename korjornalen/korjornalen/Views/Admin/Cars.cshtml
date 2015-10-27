@@ -1,0 +1,76 @@
+﻿@model List<korjornalen.Models.Car>
+
+@{
+    ViewBag.Title = @Resources.AppString.AdministerCars;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@AppString.AdministerCars</h2>
+<hr />
+<div class="row">
+    <div class="col-md-2">
+        @Html.Partial("_AdminMenu")
+        <hr />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        @Resources.AppString.CreateCar
+                    </div>
+                    <div class="panel-body" id="filtersBody">
+                        @using (Html.BeginForm("CreateCar", "Admin", FormMethod.Post))
+                        {
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <label class="control-label">@AppString.RegistrationNumber</label>
+                                    <input type="text" class="form-control" name="RegistrationNumber" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <input type="submit" class="btn btn-primary" value="@AppString.Create" />
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div id="adminList" class="col-md-10">
+        <div id="appMessage-container">
+            @Html.Partial("_AppMessage")
+        </div>
+        
+        <table class="table">
+            <tr>
+                <th>
+                    @AppString.RegistrationNumber
+                </th>
+                <th>
+                    @AppString.Active
+                </th>
+                <th></th>
+            </tr>
+
+            @for (int i = 0; i < Model.Count(); i++)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model[i].RegistrationNumber)
+                    </td>
+                    <td>
+                        @Html.EditorFor(modelItem => Model[i].Active, new { htmlAttributes = new { @onclick = "UpdateStatus('car', 'active', '" + @Model[i].Id + "', this)" } })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/Content/script-adminlists")
+}

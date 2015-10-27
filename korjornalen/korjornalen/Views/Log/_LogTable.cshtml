@@ -1,0 +1,60 @@
+﻿@using korjornalen.Utils
+@model List<korjornalen.ViewModels.LogViewModel>
+    @if (Model.Count > 0) {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Report.AssociatedUser.FirstName)
+                    @Html.DisplayFor(modelItem => item.Report.AssociatedUser.LastName)
+
+                </td>
+        
+                <td>
+                    @Html.DisplayFor(modelItem => item.Report.OdometerStart)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Report.OdometerEnd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dateFormated)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Report.FromLocation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Report.ToLocation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.allPassengers)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Report.AssociatedProject.ProjectNumber)
+                </td>
+                <td>
+                    @ExtensionMethod.ToReadable(item.Report.Debitable)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberOfKm)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Report.Purpose)
+                </td>
+
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Report.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Report.Id},  new { onclick = "return confirm('Are you sure you wish to delete this log?');" })
+
+                </td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td colspan="12">
+                <div class="alert alert-info" role="alert">@AppString.NoReportsToDisplay</div>
+            </td>
+        </tr>
+    }

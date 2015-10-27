@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "korjornalen", "korjornalen\korjornalen.csproj", "{2B5BDEB0-24DC-4775-8306-F29390910178}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resources", "Resources\Resources.csproj", "{3EE727B5-3870-462F-9FFB-D6268D643CBA}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://h10danla.visualstudio.com/defaultcollection
+		SccProjectUniqueName0 = korjornalen\\korjornalen.csproj
+		SccProjectName0 = korjornalen
+		SccAuxPath0 = https://h10danla.visualstudio.com/defaultcollection
+		SccLocalPath0 = korjornalen
+		SccProvider0 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName1 = Resources\\Resources.csproj
+		SccProjectName1 = Resources
+		SccAuxPath1 = https://h10danla.visualstudio.com/defaultcollection
+		SccLocalPath1 = Resources
+		SccProvider1 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2B5BDEB0-24DC-4775-8306-F29390910178}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B5BDEB0-24DC-4775-8306-F29390910178}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B5BDEB0-24DC-4775-8306-F29390910178}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B5BDEB0-24DC-4775-8306-F29390910178}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EE727B5-3870-462F-9FFB-D6268D643CBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EE727B5-3870-462F-9FFB-D6268D643CBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EE727B5-3870-462F-9FFB-D6268D643CBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EE727B5-3870-462F-9FFB-D6268D643CBA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

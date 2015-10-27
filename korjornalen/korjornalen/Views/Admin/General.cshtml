@@ -1,0 +1,38 @@
+﻿@model korjornalen.ViewModels.AdminGeneralSettingsViewModel
+
+@{
+    ViewBag.Title = @Resources.AppString.AdminMenuGeneral;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@AppString.AdminMenuGeneral</h2>
+<hr />
+<div class="row">
+    <div class="col-md-2">
+        @Html.Partial("_AdminMenu")
+    </div>
+    <div class="col-md-10">
+        <div id="appMessage-container">
+            @Html.Partial("_AppMessage")
+        </div>
+    </div>
+    <div class="col-md-5">
+        @using (Html.BeginForm("General", "Admin", FormMethod.Post))
+        {
+            <div class="form-group col-md-12">
+                @Html.LabelFor(model => model.ProjectNumber)
+                <p>@AppString.DefaultProjectHelp</p>
+                @Html.TextBoxFor(model => model.ProjectNumber, new { @class = "form-control" })
+            </div>
+            <div class="form-group col-md-6">
+                <input type="submit" class="btn btn-primary" value="@AppString.SaveChanges" />
+            </div>
+
+        }
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/Content/script-adminlists")
+}

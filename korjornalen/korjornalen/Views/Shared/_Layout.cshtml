@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Sogeti @Resources.AppString.ApplicationName</title>
+    @Styles.Render("~/Content/css-shared")
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("styles", required: false)
+    <script type="text/javascript">
+        var appInsights=window.appInsights||function(config){
+            function s(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},r=document,f=window,e="script",o=r.createElement(e),i,u;for(o.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js",r.getElementsByTagName(e)[0].parentNode.appendChild(o),t.cookie=r.cookie,t.queue=[],i=["Event","Exception","Metric","PageView","Trace"];i.length;)s("track"+i.pop());return config.disableExceptionTracking||(i="onerror",s("_"+i),u=f[i],f[i]=function(config,r,f,e,o){var s=u&&u(config,r,f,e,o);return s!==!0&&t["_"+i](config,r,f,e,o),s}),t
+        }({
+            instrumentationKey:"999c51e4-8390-4ec9-93a1-a24de86e82a9"
+        });
+        
+        window.appInsights=appInsights;
+        appInsights.trackPageView();
+    </script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">
+                    <img id="brandImage" src="~/Content/Images/sogetilogo.png" />
+                </a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink(@Resources.AppString.MainMenuReport, "Index", "Report")</li>
+                    <li>@Html.ActionLink(@Resources.AppString.MainMenuLogs, "Index", "Log")</li>
+                    <li>@Html.ActionLink(@Resources.AppString.MainMenuAdmin, "General", "Admin")</li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        
+                    }
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+
+            <!--<div id="footerTop"></div>
+            <div id="footerBottom">
+                <div class="row col-md-12">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">-->
+                        <p>
+                            <span style="font-family: sans-serif">
+                                <!-- Application font doesn't support the copyright character -->
+                                &copy;&nbsp;
+                            </span>
+                            @DateTime.Now.Year - Sogeti @AppString.ApplicationName
+                        </p>
+                    <!--</div>
+                    <div class="col-md-4"></div>
+                </div>
+            </div>-->
+
+
+
+        </footer>
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

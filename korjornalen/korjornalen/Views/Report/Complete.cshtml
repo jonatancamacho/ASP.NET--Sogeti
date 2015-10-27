@@ -1,0 +1,110 @@
+﻿@model korjornalen.ViewModels.ReportCompletionViewModel
+
+@{
+    ViewBag.Title = "Complete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@AppString.ReportCompleteTitle</h2>
+<hr />
+<div id="appMessage-container">
+    @Html.Partial("_AppMessage")
+</div>
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <span class="form-text text-muted">@Model.Date</span>
+                @Html.HiddenFor(model => model.Date)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CarRegistrationNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <span class="form-text text-muted">@Model.CarRegistrationNumber</span>
+                @Html.HiddenFor(model => model.CarRegistrationNumber)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProjectInfo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <span class="form-text text-muted">@Model.ProjectInfo</span>
+                @Html.HiddenFor(model => model.ProjectInfo)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OdometerStart, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <span class="form-text text-muted">@Model.OdometerStart</span>
+                @Html.HiddenFor(model => model.OdometerStart)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OdometerEnd, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OdometerEnd, new { htmlAttributes = new { @Value = "", @class = "form-control" } })
+                @if (ViewBag.OdometerError != null)
+                {
+                    <span class="text-danger field-validation-error">
+                        <span>@ViewBag.OdometerError</span>
+                    </span>
+                }
+                @Html.ValidationMessageFor(model => model.OdometerEnd, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ToLocation, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ToLocation, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ToLocation, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Passengers, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Passengers, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Passengers, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Debitable, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.Debitable)
+                    @Html.ValidationMessageFor(model => model.Debitable, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Purpose, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Purpose, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Purpose, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="@AppString.ReportCompleteSubmit" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

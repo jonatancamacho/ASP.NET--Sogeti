@@ -1,0 +1,20 @@
+﻿@if(ViewBag.AppMessage != null) {
+    var appMessage = (korjornalen.ViewModels.AppMessage)ViewBag.AppMessage;
+    var classes = "alert alert-dismissable";
+    switch (appMessage.Type)
+    {
+        case "success":
+            classes += " alert-success";
+            break;
+        case "error":
+            classes += " alert-danger";
+            break;
+        case "warning":
+            classes += " alert-warning";
+            break;
+        case "info":
+            classes += " alert-info";
+            break;
+    }
+    <div id="appMessage-alert-box" class="@classes"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><span id="appMessage-message">@ViewBag.AppMessage.Message</span></div>
+}

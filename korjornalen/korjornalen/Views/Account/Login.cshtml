@@ -1,0 +1,70 @@
+﻿@using korjornalen.Models
+@model korjornalen.ViewModels.LoginViewModel
+
+@{
+    ViewBag.Title = AppString.Welcome+"!";
+    Layout = "~/Views/Shared/_LayoutNonAuth.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <section id="loginForm">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+            {
+                <img id="loginLogo" src="~/Content/Images/sogetilogo.png" />
+                <div class="island-light">
+                    @Html.AntiForgeryToken()
+                    <div id="loginFormTitle">
+                        <h2>@Resources.AppString.ApplicationName</h2>
+                    </div>
+                    <div id="loginFormDescription">
+                        <h4>@Resources.AppString.SignInHeader</h4>
+                    </div>
+                    
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email, new { @class = "col-md-12 control-label" })
+                        <div class="col-md-12 form-group">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password, new { @class = "col-md-12 control-label" })
+                        <div class="col-md-12">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <div class="checkbox">
+                                @Html.CheckBoxFor(m => m.RememberMe)
+                                @Html.LabelFor(m => m.RememberMe)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input type="submit" value="@Resources.AppString.SignIn" class="btn btn-primary" />
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <span>@Html.ActionLink(Resources.AppString.SignInRegisterNewUser, "Register")</span>
+                    </div>
+
+                    @* Enable this once you have account confirmation enabled for password reset functionality
+                        <p>
+                            @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                        </p>*@
+                </div>
+                @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+            }
+        </section>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
